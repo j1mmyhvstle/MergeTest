@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,9 +45,9 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtMobile.Text != "" && txtName.Text != "" && txtFather.Text != "" && txtMother.Text != "" && txtEmaild.Text != "" && txtPernament.Text != "" && txtUniqueId.Text != "" && txtDesignation.SelectedIndex != -1)
+            try
             {
-                Int64 mobile = Int64.Parse(txtMobile.Text);
+                string  mobile = txtMobile.Text;
                 String name = txtName.Text;
                 String fname = txtFather.Text;
                 String mname = txtMother.Text;
@@ -55,14 +56,31 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
                 String designation = txtDesignation.Text;
                 String id = txtUniqueId.Text;
 
-                query = "insert into newEmployee(emobile, ename, efname, emname, eemail, epaddress, eidproof, edesignation) values (" + mobile + ", '" + name + "', '" + fname + "', '" + mname + "', '" + email + "', '" + address + "', '" + id + "', '" + designation + "')";
-                fn.setData(query, "Đã thêm nhân viên mới thành công");
+                // Using parameterized query to prevent SQL injection
+                string query = "INSERT INTO newEmployee(emobile, ename, efname, emname, eemail, epaddress, eidproof, edesignation) VALUES (@mobile, @name, @fname, @mname, @email, @address, @id, @designation)";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@mobile", SqlDbType.NVarChar,250) { Value = mobile, Direction = ParameterDirection.Input },
+            new SqlParameter("@name", SqlDbType.NVarChar, 250) { Value = name , Direction = ParameterDirection.Input},
+            new SqlParameter("@fname", SqlDbType.NVarChar, 250) { Value = fname , Direction = ParameterDirection.Input},
+            new SqlParameter("@mname", SqlDbType.NVarChar, 250) { Value = mname, Direction = ParameterDirection.Input },
+            new SqlParameter("@email", SqlDbType.NVarChar, 250) { Value = email, Direction = ParameterDirection.Input },
+            new SqlParameter("@address", SqlDbType.NVarChar, 250) { Value = address , Direction = ParameterDirection.Input},
+            new SqlParameter("@designation", SqlDbType.NVarChar, 250) { Value = designation, Direction = ParameterDirection.Input },
+            new SqlParameter("@id", SqlDbType.NVarChar, 250) { Value = id , Direction = ParameterDirection.Input}
+                };
+
+                // Assuming fn.setData is a method to execute the query
+                fn.setData(query, "Thêm dữ liệu thành công!", parameters);
                 clearAll();
-            } else
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnClear_Click(object sender, EventArgs e)
         {

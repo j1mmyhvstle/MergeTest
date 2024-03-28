@@ -17,7 +17,7 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
             InitializeComponent();
         }
         function fn = new function();
-        public string id;
+
         private void txbTendangnhap_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
@@ -29,6 +29,7 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
                 }
             }
         }
+
         private void txbMatkhau_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -42,8 +43,10 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
                 {
                     CheckLogin();
                 }
+
             }
         }
+
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txbTendangnhap.Text) || string.IsNullOrWhiteSpace(txbMatkhau.Text))
@@ -62,11 +65,11 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
         // 01
         private void CheckLogin()
         {
-            string name = txbTendangnhap.Text; //mssv
+            string name = txbTendangnhap.Text;
             string password = txbMatkhau.Text;
 
             // Tạo câu lệnh SQL để kiểm tra tên đăng nhập và mật khẩu
-            string query = $"SELECT COUNT(*) FROM Student WHERE username = '{name}' AND password = '{password}'";
+            string query = $"SELECT COUNT(*) FROM Users WHERE Username_ = '{name}' AND Password_ = '{password}'";
             try
             {
                 // Sử dụng hàm getData để thực thi câu lệnh SQL và lấy kết quả
@@ -75,13 +78,12 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
                 // Kiểm tra kết quả
                 if (result > 0)
                 {
-                    // Lấy ra mã số sinh viên để dùng cho những form khác
-                    id = name;
                     // Tên đăng nhập và mật khẩu hợp lệ
                     MessageBox.Show("Đăng nhập thành công!");
-                    // Form hiện ra sau khi đăng nhập 
-                    Dashboard_SV dbsv = new Dashboard_SV(id);
-                    dbsv.Show();
+
+                    // Form hiện ra sau khi đăng nhập
+                    StudentFees studentFees = new StudentFees();
+                    studentFees.Show();
                 }
                 else
                 {
@@ -99,17 +101,30 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
         {
             tt.Show("Hãy nhập mã số sinh viên và mật khẩu được gửi về trong hộp thư đến của bạn!", label2);
         }
+
         private void label2_MouseLeave(object sender, EventArgs e)
         {
             tt.Hide(label2);
         }
+
         private void label1_MouseHover(object sender, EventArgs e)
         {
             tt.Show("Liên hệ trường bạn nhé!", label1);
         }
+
         private void label1_MouseLeave(object sender, EventArgs e)
         {
-            tt.Hide(label1);
-        } 
+            tt.Hide(label1);        }
+
+        // database thêm bảng mới 
+        /* 
+            CREATE DATABASE Users
+            (
+                Username_ nvarchar(50)
+                Password_ nvarchar(50)
+            )
+            INSERT INTO Users (Username_, Password_)
+            VALUE ('admin','admin')
+         */
     }
 }

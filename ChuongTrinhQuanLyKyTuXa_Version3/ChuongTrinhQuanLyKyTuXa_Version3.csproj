@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.3.5, Culture=neutral, PublicKeyToken=4015e4865bda28a4, processorArchitecture=MSIL">
@@ -79,17 +82,17 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard_SV.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dashboard_SV.Designer.cs">
-      <DependentUpon>Dashboard_SV.cs</DependentUpon>
-    </Compile>
     <Compile Include="EmployeePayment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmployeePayment.Designer.cs">
       <DependentUpon>EmployeePayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeedBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeedBack.Designer.cs">
+      <DependentUpon>FeedBack.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -122,8 +125,20 @@
     <Compile Include="NewStudent.Designer.cs">
       <DependentUpon>NewStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Noti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Noti.Designer.cs">
+      <DependentUpon>Noti.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Response.Designer.cs">
+      <DependentUpon>Response.cs</DependentUpon>
+    </Compile>
     <Compile Include="StudentFees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,11 +172,11 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dashboard_SV.resx">
-      <DependentUpon>Dashboard_SV.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EmployeePayment.resx">
       <DependentUpon>EmployeePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeedBack.resx">
+      <DependentUpon>FeedBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -178,6 +193,9 @@
     <EmbeddedResource Include="NewStudent.resx">
       <DependentUpon>NewStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Noti.resx">
+      <DependentUpon>Noti.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -188,6 +206,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Response.resx">
+      <DependentUpon>Response.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentFees.resx">
       <DependentUpon>StudentFees.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,15 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\process-error-icon-1024x1024-qxlzzqvg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ktx.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ktx1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\inforicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

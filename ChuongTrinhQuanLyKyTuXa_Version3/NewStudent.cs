@@ -71,7 +71,7 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
                 clearAll();
             } else
             {
-                MessageBox.Show("Vui lòng điền thông tin đầy đủ", "Thông Tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lồng điền thông tin đầy đủ", "Thông Tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -63,26 +63,6 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap inforicon {
-            get {
-                object obj = ResourceManager.GetObject("inforicon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ktx {
-            get {
-                object obj = ResourceManager.GetObject("ktx", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ktx__1_ {
             get {
                 object obj = ResourceManager.GetObject("ktx (1)", resourceCulture);

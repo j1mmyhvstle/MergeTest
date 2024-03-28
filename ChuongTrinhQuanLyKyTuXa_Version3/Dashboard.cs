@@ -127,5 +127,20 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
         {
 
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FeedBack fb = new FeedBack();
+            fb.Show();
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            Noti  tb = new Noti();
+            tb.Show();
+        }
     }
 }

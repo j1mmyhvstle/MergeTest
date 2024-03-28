@@ -31,6 +31,7 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "MMMM yyyy";
         }
+
         public void setDataGrid(Int64 mobile)
         {
             query = "SELECT * FROM fees WHERE mobileNo =" + mobile + "";
@@ -60,7 +61,7 @@ namespace ChuongTrinhQuanLyKyTuXa_Version3
                     txtName.Text = ds.Tables[0].Rows[0][0].ToString();
                     txtEmailId.Text = ds.Tables[0].Rows[0][1].ToString();
                     txtRoomNo.Text = ds.Tables[0].Rows[0][2].ToString();
-                    setDataGrid(Int64.Parse(txtMobile.Text));  
+                    setDataGrid(Int64.Parse(txtMobile.Text));   
                 } else
                 {
                     MessageBox.Show("Hồ sơ này không tồn tại.", "Thông Tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
